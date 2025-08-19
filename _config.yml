@@ -1,0 +1,24 @@
+# GitHub Pages Configuration for WageGuard
+name: WageGuard
+description: UK National Minimum Wage Compliance Platform
+url: https://edward3099.github.io
+baseurl: /wageguard
+
+# Theme (optional)
+theme: minima
+
+# Include files
+include:
+  - _headers
+  
+# Exclude files
+exclude:
+  - node_modules/
+  - frontend/
+  - src/
+  - tests/
+  - package.json
+  - package-lock.json
+  - .env.example
+  - docker-compose.yml
+  - Dockerfile

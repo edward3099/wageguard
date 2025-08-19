@@ -15,7 +15,7 @@ import ComplianceExplanationModal from '../components/ComplianceExplanationModal
 const Compliance = () => {
   const { uploadId } = useParams();
   const dispatch = useDispatch();
-  const { results, loading, error, exportLoading } = useSelector((state) => state.compliance);
+  const { results, loading, error } = useSelector((state) => state.compliance);
   
   // Table state
   const [sorting, setSorting] = useState([]);

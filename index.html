@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/wageguard/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WageGuard - UK National Minimum Wage Compliance Platform</title>
+    <meta name="description" content="WageGuard prevents UK employers from submitting underpaid wages by catching NMW/NLW errors before payroll submission. Features deterministic rules engine with AI-powered assistance." />
+    <meta name="keywords" content="UK minimum wage, NMW, NLW, payroll compliance, wage audit, employment law" />
+    <meta property="og:title" content="WageGuard - UK NMW/NLW Compliance Platform" />
+    <meta property="og:description" content="Prevent underpaid wages before payroll submission with deterministic compliance checking and AI assistance." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edward3099.github.io/wageguard/" />
+    <script type="module" crossorigin src="/wageguard/assets/index-I9AStHLt.js"></script>
+    <link rel="stylesheet" crossorigin href="/wageguard/assets/index-Da_AP2QW.css">
+    <style>
+      /* Loading screen */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        z-index: 9999;
+      }
+      .logo {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+      }
+      .demo-notice {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        max-width: 600px;
+        margin: 20px;
+      }
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        border-top: 5px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading" class="loading-screen">
+      <div class="logo">WageGuard</div>
+      <div class="subtitle">UK National Minimum Wage Compliance Platform</div>
+      <div class="demo-notice">
+        <h3>Frontend Demo</h3>
+        <p>This is a demonstration of the WageGuard user interface. The full application includes a backend API for compliance processing.</p>
+        <p>For the complete setup with backend functionality, visit the <a href="https://github.com/edward3099/wageguard" style="color: #87CEEB;">GitHub repository</a>.</p>
+      </div>
+      <div class="spinner"></div>
+    </div>
+    <div id="root"></div>
+    <script>
+      // Hide loading screen once React app loads
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loading = document.getElementById('loading');
+          if (loading) {
+            loading.style.opacity = '0';
+            loading.style.transition = 'opacity 0.5s';
+            setTimeout(() => loading.remove(), 500);
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

@@ -31,8 +31,7 @@ coverage/
 *.lcov
 .nyc_output
 
-# Build outputs
-dist/
+# Build outputs (keep root dist files for GitHub Pages)
 build/
 frontend/dist/
 frontend/build/
