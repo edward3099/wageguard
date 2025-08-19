@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2024-04-01T00:00:00.000Z",
+    "source": "GOV.UK National Minimum Wage and National Living Wage rates",
+    "description": "UK NMW/NLW rates by effective date and age band"
+  },
+  "rates": [
+    {
+      "effectiveFrom": "2024-04-01",
+      "effectiveTo": null,
+      "description": "April 2024 rates - NLW extended to age 21+",
+      "rates": {
+        "national_living_wage": {
+          "minAge": 21,
+          "maxAge": null,
+          "hourlyRate": 11.44,
+          "description": "National Living Wage (21 and over)",
+          "category": "NLW"
+        },
+        "nmw_18_20": {
+          "minAge": 18,
+          "maxAge": 20,
+          "hourlyRate": 8.60,
+          "description": "National Minimum Wage (18-20)",
+          "category": "NMW"
+        },
+        "nmw_16_17": {
+          "minAge": 16,
+          "maxAge": 17,
+          "hourlyRate": 6.40,
+          "description": "National Minimum Wage (16-17)",
+          "category": "NMW"
+        },
+        "apprentice": {
+          "minAge": null,
+          "maxAge": null,
+          "hourlyRate": 6.40,
+          "description": "Apprentice Rate",
+          "category": "APPRENTICE",
+          "conditions": [
+            "Under 19 years of age",
+            "Aged 19 or over and in the first year of apprenticeship"
+          ]
+        }
+      }
+    },
+    {
+      "effectiveFrom": "2023-04-01",
+      "effectiveTo": "2024-03-31",
+      "description": "April 2023 rates - Previous structure",
+      "rates": {
+        "national_living_wage": {
+          "minAge": 23,
+          "maxAge": null,
+          "hourlyRate": 10.42,
+          "description": "National Living Wage (23 and over)",
+          "category": "NLW"
+        },
+        "nmw_21_22": {
+          "minAge": 21,
+          "maxAge": 22,
+          "hourlyRate": 10.18,
+          "description": "National Minimum Wage (21-22)",
+          "category": "NMW"
+        },
+        "nmw_18_20": {
+          "minAge": 18,
+          "maxAge": 20,
+          "hourlyRate": 7.49,
+          "description": "National Minimum Wage (18-20)",
+          "category": "NMW"
+        },
+        "nmw_16_17": {
+          "minAge": 16,
+          "maxAge": 17,
+          "hourlyRate": 5.28,
+          "description": "National Minimum Wage (16-17)",
+          "category": "NMW"
+        },
+        "apprentice": {
+          "minAge": null,
+          "maxAge": null,
+          "hourlyRate": 5.28,
+          "description": "Apprentice Rate",
+          "category": "APPRENTICE",
+          "conditions": [
+            "Under 19 years of age",
+            "Aged 19 or over and in the first year of apprenticeship"
+          ]
+        }
+      }
+    },
+    {
+      "effectiveFrom": "2022-04-01",
+      "effectiveTo": "2023-03-31",
+      "description": "April 2022 rates",
+      "rates": {
+        "national_living_wage": {
+          "minAge": 23,
+          "maxAge": null,
+          "hourlyRate": 9.50,
+          "description": "National Living Wage (23 and over)",
+          "category": "NLW"
+        },
+        "nmw_21_22": {
+          "minAge": 21,
+          "maxAge": 22,
+          "hourlyRate": 9.18,
+          "description": "National Minimum Wage (21-22)",
+          "category": "NMW"
+        },
+        "nmw_18_20": {
+          "minAge": 18,
+          "maxAge": 20,
+          "hourlyRate": 6.83,
+          "description": "National Minimum Wage (18-20)",
+          "category": "NMW"
+        },
+        "nmw_16_17": {
+          "minAge": 16,
+          "maxAge": 17,
+          "hourlyRate": 4.81,
+          "description": "National Minimum Wage (16-17)",
+          "category": "NMW"
+        },
+        "apprentice": {
+          "minAge": null,
+          "maxAge": null,
+          "hourlyRate": 4.81,
+          "description": "Apprentice Rate",
+          "category": "APPRENTICE",
+          "conditions": [
+            "Under 19 years of age",
+            "Aged 19 or over and in the first year of apprenticeship"
+          ]
+        }
+      }
+    }
+  ],
+  "accommodationOffset": {
+    "effectiveFrom": "2024-04-01",
+    "dailyLimit": 9.99,
+    "description": "Maximum daily accommodation offset that can count towards NMW"
+  }
+}

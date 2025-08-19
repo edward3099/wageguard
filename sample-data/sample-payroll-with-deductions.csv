@@ -1,0 +1,6 @@
+worker_id,worker_name,hours,pay,period_start,period_end,uniform_deduction,tools_deduction,training_deduction,other_deductions,accommodation_charge,meals_charge,transport_charge,shift_premium,overtime_rate,holiday_pay,bonus,commission,tips,tronc
+W001,John Smith,40,320.00,2024-01-01,2024-01-31,15.00,25.00,0.00,5.00,45.00,30.00,20.00,0.00,1.5,0.00,50.00,0.00,0.00,0.00
+W002,Jane Doe,35,280.00,2024-01-01,2024-01-31,12.00,0.00,30.00,0.00,0.00,25.00,15.00,25.00,1.25,0.00,0.00,75.00,15.00,10.00
+W003,Mike Johnson,42,336.00,2024-01-01,2024-01-31,18.00,35.00,0.00,8.00,60.00,40.00,25.00,0.00,1.75,0.00,0.00,0.00,0.00,0.00
+W004,Sarah Wilson,38,304.00,2024-01-01,2024-01-31,10.00,0.00,0.00,0.00,0.00,0.00,0.00,30.00,1.5,0.00,100.00,0.00,20.00,15.00
+W005,David Brown,40,320.00,2024-01-01,2024-01-31,20.00,40.00,45.00,10.00,75.00,50.00,30.00,0.00,1.25,0.00,0.00,0.00,0.00,0.00

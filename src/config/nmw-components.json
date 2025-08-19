@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2024-01-01T00:00:00.000Z",
+    "source": "GOV.UK National Minimum Wage and National Living Wage rates and regulations",
+    "description": "Configuration defining which pay components count towards NMW calculations"
+  },
+  "payComponents": {
+    "basicPay": {
+      "category": "included",
+      "description": "Basic salary or hourly wages",
+      "treatment": "full_inclusion",
+      "keywords": ["basic_pay", "salary", "hourly_rate", "base_pay", "wages"],
+      "priority": 1
+    },
+    "allowances": {
+      "general": {
+        "category": "included",
+        "description": "General allowances for work performance (not expense reimbursements)",
+        "treatment": "full_inclusion",
+        "keywords": ["london_weighting", "living_allowance", "shift_allowance", "general_allowance", "location_allowance"],
+        "examples": ["London Weighting", "Shift Allowance", "Living Allowance"]
+      },
+      "expenses": {
+        "category": "excluded",
+        "description": "Expense reimbursements that do not count towards NMW",
+        "treatment": "full_exclusion",
+        "keywords": ["travel_expenses", "mileage", "meal_subsidy", "uniform_cost", "tool_allowance", "expense_reimbursement"],
+        "examples": ["Travel Expenses", "Mileage Allowance", "Meal Vouchers"]
+      }
+    },
+    "premiums": {
+      "overtime": {
+        "category": "partial",
+        "description": "Only basic rate counts, premium element excluded",
+        "treatment": "basic_rate_only",
+        "keywords": ["overtime_pay", "overtime_premium", "ot_rate", "time_and_half", "double_time"],
+        "calculation": "Include basic rate portion only, exclude premium element"
+      },
+      "shift": {
+        "category": "partial", 
+        "description": "Only basic rate counts, shift premium excluded",
+        "treatment": "basic_rate_only",
+        "keywords": ["shift_premium", "night_shift", "weekend_premium", "unsocial_hours", "shift_bonus"],
+        "calculation": "Include basic rate portion only, exclude premium element"
+      },
+      "holiday": {
+        "category": "partial",
+        "description": "Only basic rate counts, holiday premium excluded", 
+        "treatment": "basic_rate_only",
+        "keywords": ["bank_holiday_pay", "holiday_premium", "public_holiday_rate"],
+        "calculation": "Include basic rate portion only, exclude premium element"
+      }
+    },
+    "holidayPay": {
+      "statutory": {
+        "category": "included",
+        "description": "Payment for statutory annual leave taken during pay reference period",
+        "treatment": "full_inclusion",
+        "keywords": ["holiday_pay", "annual_leave", "vacation_pay", "statutory_leave"],
+        "condition": "Only for leave taken in the pay reference period"
+      },
+      "rolledUp": {
+        "category": "included_with_warning",
+        "description": "Rolled-up holiday pay (counts but practice is unlawful)",
+        "treatment": "full_inclusion",
+        "keywords": ["rolled_up_holiday", "holiday_uplift", "holiday_loading"],
+        "warning": "Practice of rolled-up holiday pay is unlawful and should be replaced"
+      }
+    },
+    "tips": {
+      "customer": {
+        "category": "excluded",
+        "description": "Tips, gratuities, or service charges from customers",
+        "treatment": "full_exclusion",
+        "keywords": ["tips", "gratuities", "service_charge", "cover_charge", "customer_tips"],
+        "rule": "Absolute exclusion - no exceptions"
+      },
+      "tronc": {
+        "category": "excluded",
+        "description": "Payments distributed via tronc system",
+        "treatment": "full_exclusion", 
+        "keywords": ["tronc", "tronc_payments", "tip_share", "pooled_tips"],
+        "rule": "Absolute exclusion - no exceptions"
+      }
+    },
+    "bonuses": {
+      "performance": {
+        "category": "included_complex",
+        "description": "Performance bonuses with attribution rules",
+        "treatment": "period_attribution",
+        "keywords": ["bonus", "commission", "incentive_pay", "performance_bonus", "sales_commission"],
+        "rules": [
+          "Must be attributed to work done in pay reference period",
+          "Counts for period after payment is made",
+          "Must be averaged across relevant periods if earned over multiple periods"
+        ],
+        "complexity": "high"
+      },
+      "discretionary": {
+        "category": "included_complex",
+        "description": "Discretionary bonuses with timing considerations", 
+        "treatment": "period_attribution",
+        "keywords": ["discretionary_bonus", "loyalty_bonus", "retention_bonus"],
+        "complexity": "medium"
+      }
+    },
+    "benefitsInKind": {
+      "general": {
+        "category": "excluded",
+        "description": "Company benefits that don't count towards NMW",
+        "treatment": "full_exclusion",
+        "keywords": ["company_car", "health_insurance", "pension_contribution", "gym_membership"],
+        "examples": ["Company Car", "Private Health Insurance", "Pension Contributions"]
+      },
+      "accommodation": {
+        "category": "included_limited",
+        "description": "Accommodation offset with daily limit",
+        "treatment": "capped_inclusion",
+        "keywords": ["accommodation_offset", "accommodation_charge", "housing_benefit", "lodging"],
+        "dailyLimit": 9.99,
+        "calculation": "Up to £9.99 per day can count towards NMW"
+      }
+    },
+    "deductions": {
+      "statutory": {
+        "category": "neutral",
+        "description": "Statutory deductions that don't reduce NMW pay",
+        "treatment": "no_impact",
+        "keywords": ["tax", "national_insurance", "ni", "paye", "student_loan"],
+        "rule": "Do not reduce pay for NMW purposes"
+      },
+      "voluntary": {
+        "category": "neutral", 
+        "description": "Voluntary deductions that don't reduce NMW pay",
+        "treatment": "no_impact",
+        "keywords": ["union_fees", "pension_contribution", "charity_donation", "cycle_scheme"],
+        "rule": "Do not reduce pay for NMW purposes"
+      },
+      "employer_benefit": {
+        "category": "reduces_nmw",
+        "description": "Deductions for employer's benefit that reduce NMW pay",
+        "treatment": "reduces_pay",
+        "keywords": ["till_shortage", "property_damage", "cash_shortage", "stock_loss"],
+        "rule": "These deductions reduce pay for NMW calculation purposes"
+      }
+    },
+    "salaryServices": {
+      "sacrifice": {
+        "category": "reduces_nmw",
+        "description": "Salary sacrifice reduces pay for NMW purposes",
+        "treatment": "reduces_pay", 
+        "keywords": ["salary_sacrifice", "sacrifice_scheme", "bike_scheme", "car_scheme"],
+        "rule": "Post-sacrifice pay is used for NMW calculation"
+      }
+    }
+  },
+  "calculationRules": {
+    "formula": "Total NMW-eligible remuneration / Total hours worked in pay reference period",
+    "order": [
+      "Start with gross pay",
+      "Add qualifying allowances and premiums (basic rate only)",
+      "Add holiday pay for leave taken in period", 
+      "Add accommodation offset (up to daily limit)",
+      "Add performance bonuses (with period attribution)",
+      "Subtract tips and tronc payments",
+      "Subtract employer-benefit deductions",
+      "Subtract salary sacrifice amounts",
+      "Result = NMW-eligible remuneration"
+    ],
+    "complexityFlags": {
+      "amber": [
+        "Unidentified allowance detected",
+        "Premium pay detected but cannot isolate basic rate",
+        "Performance bonus attribution unclear",
+        "Rolled-up holiday pay detected"
+      ],
+      "red": [
+        "Tips included in NMW calculation",
+        "Effective rate below NMW after excluding tips"
+      ]
+    }
+  },
+  "mappingPriority": {
+    "high_confidence": ["tips", "tronc", "basic_pay", "accommodation_offset"],
+    "medium_confidence": ["overtime_premium", "shift_allowance", "holiday_pay"],
+    "low_confidence": ["general_allowance", "performance_bonus"],
+    "requires_clarification": ["allowance", "bonus", "premium"]
+  }
+}

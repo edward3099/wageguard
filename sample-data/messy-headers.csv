@@ -1,0 +1,4 @@
+staff_member,worker_number,hrs,total_earnings,period_from,period_to,workwear_charge,room_cost,night_shift_premium,sales_bonus
+Alice Brown,W123,38,494.00,2024-02-01,2024-02-29,20.00,45.00,15.00,100.00
+Bob Wilson,W124,40,520.00,2024-02-01,2024-02-29,0.00,45.00,20.00,0.00
+Carol Davis,W125,35,455.00,2024-02-01,2024-02-29,15.00,0.00,0.00,75.00

@@ -1,0 +1,151 @@
+# Product Requirements Document (PRD)
+
+**Product:** WageGuard — UK NMW/NLW & Pay-Compliance Checker
+**Version:** v1.2 (LLM Copilot Integrated)
+**Owner:** Product / Founder
+
+---
+
+## 1. Purpose
+
+WageGuard prevents UK employers from **submitting underpaid wages** by catching errors in National Minimum/Living Wage (NMW/NLW) compliance **before payroll submission**. The product combines a **deterministic rules engine** (authoritative for all numeric checks) with a **tightly-governed LLM copilot** that improves onboarding, explanation, and operator efficiency.
+
+**Why now:** NMW/NLW enforcement is rising, back-pay penalties are reputational and financial risks, and current payroll/Q&A tools focus on post-submission checks.
+
+---
+
+## 2. Goals & Non-Goals
+
+**Goals**
+
+* Pre-submission compliance heatmap (R/A/G) with specific **fix suggestions**.
+* Workflow for bureaus and employers: ingest messy payroll data, validate against NMW/NLW rules, output **auditor-grade evidence packs**.
+* Integrate LLM only for *language* and *mapping*, never for compliance logic.
+* Deliver results that are explainable, auditable, and exportable.
+
+**Non-Goals**
+
+* WageGuard will not calculate tax/NI/PAYE (covered by existing payroll).
+* Will not auto-file or replace payroll software; it sits *before submission*.
+* LLM will not generate compliance outcomes, rates, or final pass/fail flags.
+
+---
+
+## 3. Target Users
+
+1. **Employers** — Hospitality, retail, logistics, care, facilities, universities. HR/payroll operators need clear dashboards and reports.
+2. **Payroll Bureaus / Accountants** — Handle compliance across many clients.
+3. **Auditors / Regulators (indirect)** — Benefit from structured evidence packs exported by employers.
+
+---
+
+## 4. Core Features
+
+### 4.1 Deterministic Rules Engine (Core)
+
+* **Inputs:** CSV uploads (payroll exports, rota data, time sheets).
+* **Logic:**
+  * Pay-reference periods (PRP)
+  * Offsets (accommodation, uniform, meals, deductions)
+  * Allowances, troncs, and premiums
+  * Holiday pay uplift
+  * Arrears top-ups
+* **Outputs:**
+  * Worker-by-worker status: Red / Amber / Green
+  * Specific flagged issue (e.g., "Accommodation offset exceeded £9.99 per day")
+  * Suggested fix (deterministic, not AI-generated)
+
+### 4.2 LLM Copilot (Supportive, not Deterministic)
+
+* **Mapping:** Converts messy column headers → required schema (with confidence % and human confirm).
+* **Explanations:** Generates plain-English explanations for flagged issues (manager- and worker-facing).
+* **Narratives:** Drafts change-log notes and exception triage memos.
+* **Comms:** Suggests worker or manager email templates.
+* **Test Data:** Generates edge-case scenarios for QA/regression tests.
+* **Guardrails:**
+  * No final compliance logic.
+  * Schema output validated against strict regex.
+  * Prompts always tied to rule citations.
+  * Data masked before being sent.
+
+### 4.3 Evidence & Workflow
+
+* **Evidence Pack Export:**
+  * Summary dashboard (aggregate compliance by site / client).
+  * Worker-level table of flags.
+  * Formal references to GOV.UK tables.
+  * Change log + explanations.
+* **Audit Mode:** One-click "export audit-ready PDF/CSV" for regulators or boards.
+
+---
+
+## 5. Architecture
+
+* **Front-end:** Web app (React or Vue), mobile responsive.
+* **Back-end:** Node/Go deterministic engine, PostgreSQL for storage.
+* **LLM integration:** Hosted, in-region (UK/EU) API calls with strict masking.
+* **Data Security:**
+  * No sensitive identifiers to LLM.
+  * All compliance logic runs server-side rules engine.
+  * Optional on-prem mode for bureaus.
+
+---
+
+## 6. Pricing & Packaging
+
+* **Per Active Worker / Month**
+  * Small (0–100 workers): £0.50–£1.00 per worker
+  * Bureau plans with volume discounts
+* **Value Driver:** cost per check << cost of arrears/penalties
+* **Margins:** 85–90% (low infra cost, minimal LLM tokens).
+
+---
+
+## 7. Go-to-Market
+
+* **Channels:**
+  * LinkedIn + content ("Why NMW errors happen before submission")
+  * Search + calculators ("NMW compliance check")
+  * Bureau/accountant partnerships
+* **Conversion Hooks:**
+  * "Upload your CSV → instant heatmap" demo
+  * LLM-powered mapping reduces onboarding friction
+
+---
+
+## 8. Risks & Mitigations
+
+| Risk                                  | Mitigation                                                                 |
+| ------------------------------------- | -------------------------------------------------------------------------- |
+| **LLM hallucination**                 | Strict schema validation, low-confidence mapping flagged for human confirm |
+| **Prompt injection**                  | Data minimisation + regex sanitation of headers before sending             |
+| **Over-reliance on AI explanations**  | Compliance flags always grounded in deterministic results                  |
+| **Ads volatility / acquisition cost** | Focused on high-intent search + bureau channel                             |
+| **Legal risk if misused**             | Product never advises "this is compliant," only flags issues vs rules      |
+
+---
+
+## 9. Success Metrics
+
+* **Adoption:** % of payroll bureaus trialling WageGuard.
+* **Coverage:** Avg % of worker records mapped without manual correction.
+* **Accuracy:** % of compliance flags confirmed correct vs audit sample.
+* **Retention:** Renewal rate of bureau clients after 6 months.
+* **Conversion:** Trial-to-paid conversion from CSV demo.
+
+---
+
+## 10. Timeline (MVP → GA)
+
+* **M1:** Rules engine MVP — ingest CSV, apply pay-reference checks, export basic RAG.
+* **M2:** LLM Copilot — schema mapping + plain-English explanations.
+* **M3:** Evidence pack export + bureau dashboard.
+* **M4:** Bureau onboarding & pricing experiments.
+
+---
+
+## 11. Verdict
+
+WageGuard is a **likely-to-succeed** compliance SaaS. The **workflow moat** lies in deterministic pay-reference period logic, penalty-aware outputs, and evidence packs. The **LLM copilot** improves usability and onboarding but does not alter defensibility. The product delivers **audit-ready, low-friction compliance checks** to a high-intent, high-pain market with recurring demand.
+
+**Score:** 8.465 / 10 — within "likely to succeed" band.

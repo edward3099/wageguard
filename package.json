@@ -1,0 +1,57 @@
+{
+  "name": "wageguard-backend",
+  "version": "1.0.0",
+  "description": "WageGuard Backend - UK NMW/NLW & Pay-Compliance Checker",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "init-db": "node src/config/init-db.js",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "postinstall": "cd frontend && npm install",
+    "lint": "echo 'Linting not configured yet'",
+    "format": "echo 'Formatting not configured yet'"
+  },
+  "keywords": [
+    "compliance",
+    "payroll",
+    "NMW",
+    "NLW",
+    "UK",
+    "wages",
+    "audit"
+  ],
+  "author": "WageGuard Team",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "csv-parse": "^6.1.0",
+    "csv-stringify": "^6.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fs-extra": "^11.3.1",
+    "helmet": "^7.1.0",
+    "html-pdf-node": "^1.0.8",
+    "jsonwebtoken": "^9.0.2",
+    "jspdf": "^3.0.1",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.2",
+    "pdf-lib": "^1.17.1",
+    "pg": "^8.11.3",
+    "puppeteer": "^24.16.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
