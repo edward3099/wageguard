@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WageGuard - UK National Minimum Wage Compliance Platform</title>
+    <meta name="description" content="WageGuard prevents UK employers from submitting underpaid wages by catching NMW/NLW errors before payroll submission.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .tech-stack {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tech-category {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .tech-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .demo-notice {
+            background: rgba(255, 235, 59, 0.1);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .demo-notice h3 {
+            color: #f57c00;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+            .tagline {
+                font-size: 1.3rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">WageGuard</h1>
+            <p class="tagline">UK National Minimum Wage Compliance Platform</p>
+            <p class="description">
+                Prevent underpaid wages before payroll submission with our deterministic rules engine 
+                and AI-powered assistance. Ensure NMW/NLW compliance with audit-ready evidence packs.
+            </p>
+            <div class="demo-notice">
+                <h3>🌐 GitHub Pages Demo</h3>
+                <p>This is a static demonstration page. The full WageGuard platform includes a complete backend API with compliance processing, database integration, and AI services.</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://github.com/edward3099/wageguard" class="btn btn-primary" target="_blank">
+                    📚 View Full Repository
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    ✨ Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3 class="feature-title">Deterministic Rules Engine</h3>
+                    <p>Implements UK NMW/NLW legislation with Pay-Reference Period calculations, accommodation offsets, and deduction handling.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI-Powered Assistant</h3>
+                    <p>Secure LLM integration for CSV mapping, compliance explanations, and user guidance with data masking and prompt injection prevention.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">RAG Status System</h3>
+                    <p>Clear Red/Amber/Green compliance visualization with specific fix suggestions and precise shortfall calculations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3 class="feature-title">Evidence Pack Export</h3>
+                    <p>Professional PDF reports and comprehensive CSV exports suitable for HMRC submissions and audit purposes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3 class="feature-title">Multi-Tenant Architecture</h3>
+                    <p>Support for both individual employers and payroll bureaus managing multiple clients with complete data isolation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Security First</h3>
+                    <p>PII data masking, JWT authentication, input validation, and comprehensive audit logging throughout the platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h3>Frontend</h3>
+                    <p>React 18, Redux Toolkit, TanStack Table, Tailwind CSS, Vite</p>
+                </div>
+                <div class="tech-category">
+                    <h3>Backend</h3>
+                    <p>Node.js, Express, PostgreSQL, JWT Authentication, Docker</p>
+                </div>
+                <div class="tech-category">
+                    <h3>AI Integration</h3>
+                    <p>Anthropic Claude, OpenAI GPT, Google Gemini with secure data masking</p>
+                </div>
+                <div class="tech-category">
+                    <h3>DevOps</h3>
+                    <p>GitHub Actions, Docker Compose, Comprehensive Testing, Security Scanning</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem;">Project Status</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">✅ <strong>100% Complete</strong> - All 15 main tasks and 17 subtasks finished</p>
+                <p style="margin-bottom: 2rem;">Ready for production deployment with comprehensive testing, documentation, and security features.</p>
+                
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://github.com/edward3099/wageguard/blob/main/README.md" class="btn btn-primary" target="_blank">
+                        📖 Documentation
+                    </a>
+                    <a href="https://github.com/edward3099/wageguard/tree/main/docs" class="btn btn-secondary" target="_blank">
+                        🚀 Deployment Guides
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 WageGuard - UK National Minimum Wage Compliance Platform</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">
+                Built with ❤️ for UK employers and payroll bureaus to ensure fair wages for all workers.
+            </p>
+            <p style="margin-top: 1rem;">
+                <a href="https://github.com/edward3099/wageguard" style="color: #87CEEB;">View on GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
