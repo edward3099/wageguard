@@ -40,17 +40,23 @@ export default function OTPVerifyScreen() {
     setRole(role);
 
     if (role === 'queen') {
-      // Check if crew is formed
-      const { data: queenData } = await supabase
-        .from('queens')
-        .select('crew_formed')
-        .eq('user_id', user.id)
-        .single();
-      
-      if (queenData?.crew_formed) {
-        router.replace('/(queen)/dashboard');
+      // In mock mode, skip crew check and go straight to dashboard
+      // In real mode, check if crew is formed
+      if (process.env.EXPO_PUBLIC_SUPABASE_URL && process.env.EXPO_PUBLIC_SUPABASE_URL !== 'your_supabase_project_url') {
+        const { data: queenData } = await supabase
+          .from('queens')
+          .select('crew_formed')
+          .eq('user_id', user.id)
+          .single();
+        
+        if (queenData?.crew_formed) {
+          router.replace('/(queen)/dashboard');
+        } else {
+          router.replace('/(auth)/onboarding');
+        }
       } else {
-        router.replace('/(auth)/onboarding');
+        // Mock mode: go to dashboard
+        router.replace('/(queen)/dashboard');
       }
     } else if (role === 'crew') {
       router.replace('/(crew)/room');

@@ -3,6 +3,8 @@ import { Match, Profile } from '@/types/match';
 import { BioProposal, DateProposal } from '@/types/crew';
 import { Chat } from '@/types/chat';
 import { DashboardData } from '@/types/dashboard';
+import { USE_MOCK_MODE } from '@/constants/config';
+import { mockStorage, generateMockMatches, generateMockBioProposals, generateMockDateProposals } from '@/utils/mockData';
 
 /**
  * Get all dashboard data for a queen
@@ -10,6 +12,24 @@ import { DashboardData } from '@/types/dashboard';
 export async function getDashboardData(
   queenId: string
 ): Promise<{ data: DashboardData | null; error: Error | null }> {
+  if (USE_MOCK_MODE) {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const matches = generateMockMatches(5);
+    const bioProposals = generateMockBioProposals(3);
+    const dateProposals = generateMockDateProposals(matches[0]?.id || 'mock-match-1', 2);
+    const chats = mockStorage.getChats();
+    
+    return {
+      data: {
+        matches,
+        pendingBioProposals: bioProposals.filter(p => p.status === 'pending'),
+        pendingDateProposals: dateProposals.filter(p => p.status === 'pending'),
+        activeChats: chats,
+      },
+      error: null,
+    };
+  }
+
   try {
     // Get matches
     const { data: matches, error: matchesError } = await supabase

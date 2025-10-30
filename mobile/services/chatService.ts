@@ -1,9 +1,17 @@
 import { supabase } from './supabase';
 import { Message, Chat } from '@/types/chat';
+import { USE_MOCK_MODE } from '@/constants/config';
+import { mockStorage, MOCK_USER, MOCK_QUEEN } from '@/utils/mockData';
 
 export async function getMessages(
   chatId: string
 ): Promise<{ data: Message[] | null; error: Error | null }> {
+  if (USE_MOCK_MODE) {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const messages = mockStorage.getMessages(chatId);
+    return { data: messages, error: null };
+  }
+
   try {
     const { data, error } = await supabase
       .from('messages')
@@ -32,6 +40,24 @@ export async function sendMessage(
   voiceMode?: 'funny' | 'serious',
   isCrewTakeover: boolean = false
 ): Promise<{ data: Message | null; error: Error | null }> {
+  if (USE_MOCK_MODE) {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const message: Message = {
+      id: `mock-msg-${Date.now()}`,
+      chat_id: chatId,
+      sender_id: MOCK_USER.id,
+      sender_type: senderType,
+      content,
+      emoji_reactions: {},
+      is_crew_takeover: isCrewTakeover,
+      crew_member_name: crewMemberName,
+      voice_mode: voiceMode,
+      created_at: new Date().toISOString(),
+    };
+    mockStorage.addMessage(chatId, message);
+    return { data: message, error: null };
+  }
+
   try {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -110,6 +136,25 @@ export async function addReaction(
 export async function getChatByMatchId(
   matchId: string
 ): Promise<{ data: Chat | null; error: Error | null }> {
+  if (USE_MOCK_MODE) {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    const chats = mockStorage.getChats();
+    const chat = chats.find(c => c.match_id === matchId);
+    if (chat) {
+      return { data: chat, error: null };
+    }
+    // Create a new chat if not found
+    const newChat: Chat = {
+      id: `mock-chat-${matchId}`,
+      match_id: matchId,
+      queen_id: MOCK_QUEEN.user_id,
+      match_user_id: 'mock-user-100',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+    return { data: newChat, error: null };
+  }
+
   try {
     const { data, error } = await supabase
       .from('chats')

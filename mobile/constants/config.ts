@@ -2,6 +2,9 @@
 export const SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL || '';
 export const SUPABASE_ANON_KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || '';
 
+// Mock Mode: Enable when Supabase is not configured
+export const USE_MOCK_MODE = !SUPABASE_URL || !SUPABASE_ANON_KEY || SUPABASE_URL === 'your_supabase_project_url';
+
 // App Configuration
 export const APP_SCHEME = 'wingboard';
 export const INVITE_LINK_BASE = `${APP_SCHEME}://invite`;

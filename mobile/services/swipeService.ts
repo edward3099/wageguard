@@ -1,6 +1,8 @@
 import { supabase } from './supabase';
 import { Profile, SwipeDecision, SwipeVoteCount } from '@/types/match';
 import { SwipeServiceResponse, SwipeResult, GetProfilesOptions } from '@/types/swipe';
+import { USE_MOCK_MODE } from '@/constants/config';
+import { mockStorage, generateMockProfiles, generateMockVoteCount, MOCK_QUEEN } from '@/utils/mockData';
 
 /**
  * Submit a swipe decision for a profile
@@ -14,6 +16,20 @@ export async function submitSwipeDecision(
   profileId: string,
   decision: 'like' | 'pass'
 ): Promise<SwipeServiceResponse<SwipeDecision>> {
+  if (USE_MOCK_MODE) {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const swipeDecision: SwipeDecision = {
+      id: `mock-swipe-${Date.now()}`,
+      queen_id: queenId,
+      profile_id: profileId,
+      crew_member_id: 'mock-crew-1',
+      decision,
+      created_at: new Date().toISOString(),
+    };
+    mockStorage.addSwipeDecision(profileId, swipeDecision);
+    return { data: swipeDecision, error: null };
+  }
+
   try {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -77,6 +93,12 @@ export async function getSwipeVoteCounts(
   queenId: string,
   profileId: string
 ): Promise<SwipeServiceResponse<SwipeVoteCount>> {
+  if (USE_MOCK_MODE) {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    const voteCount = generateMockVoteCount(profileId);
+    return { data: voteCount, error: null };
+  }
+
   try {
     const { data, error } = await supabase
       .from('swipe_decisions')
@@ -117,6 +139,12 @@ export async function getProfilesForSwipe(
   queenId: string,
   options: GetProfilesOptions = {}
 ): Promise<SwipeServiceResponse<Profile[]>> {
+  if (USE_MOCK_MODE) {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const profiles = mockStorage.getProfiles().slice(0, options.limit || 10);
+    return { data: profiles, error: null };
+  }
+
   try {
     const { limit = 10, excludeSwiped = true } = options;
 
@@ -191,6 +219,10 @@ export async function getProfilesForSwipe(
 export async function getQueenIdFromCrewMember(
   crewMemberId: string
 ): Promise<SwipeServiceResponse<string>> {
+  if (USE_MOCK_MODE) {
+    return { data: MOCK_QUEEN.user_id, error: null };
+  }
+
   try {
     const { data, error } = await supabase
       .from('crews')
@@ -218,6 +250,12 @@ export async function checkMatchCreated(
   queenId: string,
   profileId: string
 ): Promise<SwipeServiceResponse<string | null>> {
+  if (USE_MOCK_MODE) {
+    // Randomly create a match (30% chance)
+    const matchCreated = Math.random() > 0.7;
+    return { data: matchCreated ? `mock-match-${profileId}` : null, error: null };
+  }
+
   try {
     const { data, error } = await supabase
       .from('matches')
