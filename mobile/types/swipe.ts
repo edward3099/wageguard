@@ -1,5 +1,4 @@
-import { Profile } from './match';
-import { SwipeDecision, SwipeVoteCount } from './match';
+import { Profile, SwipeDecision, SwipeVoteCount } from '@/types/match';
 
 /**
  * Props for SwipeCard component
