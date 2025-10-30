@@ -1,35 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SwipeScreen from './swipe';
+import BioLabScreen from './bio';
+import ChatReactorScreen from './chat-reactor';
+import DateDJScreen from './date';
 
 const Tab = createBottomTabNavigator();
-
-function BioLab() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Bio Lab</Text>
-      <Text>Edit and vote on bio proposals</Text>
-    </View>
-  );
-}
-
-function ChatReactor() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Chat Reactor</Text>
-      <Text>React to chats and take over conversations</Text>
-    </View>
-  );
-}
-
-function DateDJ() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Date DJ</Text>
-      <Text>Propose dates and vote</Text>
-    </View>
-  );
-}
 
 export default function CrewRoom() {
   return (
@@ -46,18 +22,18 @@ export default function CrewRoom() {
         options={{ title: 'Swipe' }}
       />
       <Tab.Screen 
-        name="BioLab" 
-        component={BioLab}
+        name="bio" 
+        component={BioLabScreen}
         options={{ title: 'Bio' }}
       />
       <Tab.Screen 
-        name="ChatReactor" 
-        component={ChatReactor}
+        name="chat-reactor" 
+        component={ChatReactorScreen}
         options={{ title: 'Chat' }}
       />
       <Tab.Screen 
-        name="DateDJ" 
-        component={DateDJ}
+        name="date" 
+        component={DateDJScreen}
         options={{ title: 'Dates' }}
       />
     </Tab.Navigator>

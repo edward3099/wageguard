@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'reac
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { verifyOTP } from '@/services/auth';
 import { useAuthStore } from '@/store/authStore';
+import { supabase } from '@/services/supabase';
 
 export default function OTPVerifyScreen() {
   const { phone } = useLocalSearchParams<{ phone: string }>();
@@ -39,11 +40,22 @@ export default function OTPVerifyScreen() {
     setRole(role);
 
     if (role === 'queen') {
-      router.replace('/(queen)/dashboard');
+      // Check if crew is formed
+      const { data: queenData } = await supabase
+        .from('queens')
+        .select('crew_formed')
+        .eq('user_id', user.id)
+        .single();
+      
+      if (queenData?.crew_formed) {
+        router.replace('/(queen)/dashboard');
+      } else {
+        router.replace('/(auth)/onboarding');
+      }
     } else if (role === 'crew') {
       router.replace('/(crew)/room');
     } else {
-      // New user - route to onboarding
+      // New user - route to onboarding to determine role
       router.replace('/(auth)/onboarding');
     }
 
