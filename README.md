@@ -162,9 +162,11 @@ npm run android
 
 ## 📚 Documentation
 
+- **[WINGBOARD Frontend Framework](docs/WINGBOARD-FRONTEND-FRAMEWORK.md)** - Systematic framework for building features (W-I-N-G-B-O-A-R-D)
 - [Implementation Plan](docs/wingboard-implementation-plan.md)
 - [Memory Bank](memory-bank/) - Project context and planning
 - [Supabase Setup](supabase/README.md)
+- [Current Status](docs/CURRENT-STATUS.md)
 
 ## 🎯 MVP Roadmap
 
