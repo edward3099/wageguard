@@ -9,6 +9,7 @@ export interface Match {
 
 export interface Profile {
   user_id: string;
+  name?: string; // User's name from users table
   photos: string[];
   age: number;
   location: string;

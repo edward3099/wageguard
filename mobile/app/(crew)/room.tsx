@@ -1,17 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SwipeScreen from './swipe';
 
 const Tab = createBottomTabNavigator();
-
-// Placeholder screens - will be implemented
-function SwipeCommander() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Swipe Commander</Text>
-      <Text>Group swipe profiles here</Text>
-    </View>
-  );
-}
 
 function BioLab() {
   return (
@@ -50,8 +41,8 @@ export default function CrewRoom() {
       }}
     >
       <Tab.Screen 
-        name="SwipeCommander" 
-        component={SwipeCommander}
+        name="swipe" 
+        component={SwipeScreen}
         options={{ title: 'Swipe' }}
       />
       <Tab.Screen 
